@@ -24,7 +24,6 @@
    
       Después de ingresar el texto, el programa generará automáticamente el mensaje cifrado
 
- 
 
      ## 2. Descifrar mensaje
      El sistema mostrará la siguiente opción:
@@ -32,19 +31,35 @@
      - Ingrese el mensaje a descifrar
    
      Después de ingresar el texto cifrado, el programa mostrará el mensaje descifrado
+     
 
-   
+     ## 3. Cifrado Vigenére
+     El sistema mostrará la siguiente opción:
 
-     ## 3. Convertir LETRAS a NÚMEROS
+     Ingrese el mensaje
+     Ingrese la clave secreta
+
+     El programa cifrará el mensaje utilizando el método polialfabético de Vigenére
+     
+
+     ## 4. Descifrado Vigenére
+     El sistema mostrará la siguiente opción:
+
+     Ingrese el mensaje cifrado
+     Ingrese la clave secreta
+
+     El programa recuperará el mensaje original utilizando la misma clave
+
+
+     ## 5. Convertir LETRAS a NÚMEROS
       El sistema mostrará la siguiente opción:
    
      - Ingrese la palabra o frase
    
       El programa convertirá cada letra en su equivalente numérico
 
-   
 
-     ## 4. Convertir NÚMEROS a LETRAS
+     ## 6. Convertir NÚMEROS a LETRAS
      El sistema mostrará la siguiente opción:
    
      - Ingrese los números separados por espacios
@@ -52,7 +67,7 @@
      El programa convertirá los números en letras
 
 
-     ## 5. Salir
+     ## 7. Salir
      Permite cerrar el programa de forma segura
 
 
@@ -64,13 +79,19 @@
   ## 2. Descifrado César
   Permite recuperar el mensaje original de un texto cifrado
 
-  ## 3. Conversión de letras a números
+  ## 3. Cifrado Vigenére
+  Permite cifrar mensajes utilizando una palabra clave, aplicando múltiples desplazamientos sobre las letras del mensaje para aumentar la seguridad
+
+  ## 4. Descifrado Vigenére
+  Permite recuperar el mensaje original utilizando la misma clave usada durante el cifrado
+
+  ## 5. Conversión de letras a números
   Convierte cada letra según su posición en el alfabeto
 
-  ## 4. Conversión de números a letras
+  ## 6. Conversión de números a letras
   Convierte números en letras del alfabeto
 
-  ## 5. Validación de errores
+  ## 7. Validación de errores
   El sistema valida:
     - Campos vacíos
     - Opciones inválidas
