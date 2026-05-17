@@ -1,0 +1,562 @@
+// ======================================
+// CIFRADOR CÉSAR Y CONVERSOR LETRAS-NÚMEROS
+// CON MANEJO COMPLETO DE ERRORES
+// ======================================
+
+// ======================================
+// FUNCIONES BASE
+// ======================================
+
+func indice_letra(letra: string): int {
+    if (letra == "A") { return 1; }
+    if (letra == "B") { return 2; }
+    if (letra == "C") { return 3; }
+    if (letra == "D") { return 4; }
+    if (letra == "E") { return 5; }
+    if (letra == "F") { return 6; }
+    if (letra == "G") { return 7; }
+    if (letra == "H") { return 8; }
+    if (letra == "I") { return 9; }
+    if (letra == "J") { return 10; }
+    if (letra == "K") { return 11; }
+    if (letra == "L") { return 12; }
+    if (letra == "M") { return 13; }
+    if (letra == "N") { return 14; }
+    if (letra == "O") { return 15; }
+    if (letra == "P") { return 16; }
+    if (letra == "Q") { return 17; }
+    if (letra == "R") { return 18; }
+    if (letra == "S") { return 19; }
+    if (letra == "T") { return 20; }
+    if (letra == "U") { return 21; }
+    if (letra == "V") { return 22; }
+    if (letra == "W") { return 23; }
+    if (letra == "X") { return 24; }
+    if (letra == "Y") { return 25; }
+    if (letra == "Z") { return 26; }
+    return 0;
+}
+
+func letra_por_numero(num: int): string {
+    if (num == 1) { return "A"; }
+    if (num == 2) { return "B"; }
+    if (num == 3) { return "C"; }
+    if (num == 4) { return "D"; }
+    if (num == 5) { return "E"; }
+    if (num == 6) { return "F"; }
+    if (num == 7) { return "G"; }
+    if (num == 8) { return "H"; }
+    if (num == 9) { return "I"; }
+    if (num == 10) { return "J"; }
+    if (num == 11) { return "K"; }
+    if (num == 12) { return "L"; }
+    if (num == 13) { return "M"; }
+    if (num == 14) { return "N"; }
+    if (num == 15) { return "O"; }
+    if (num == 16) { return "P"; }
+    if (num == 17) { return "Q"; }
+    if (num == 18) { return "R"; }
+    if (num == 19) { return "S"; }
+    if (num == 20) { return "T"; }
+    if (num == 21) { return "U"; }
+    if (num == 22) { return "V"; }
+    if (num == 23) { return "W"; }
+    if (num == 24) { return "X"; }
+    if (num == 25) { return "Y"; }
+    if (num == 26) { return "Z"; }
+    return "?";
+}
+
+func es_letra(c: string): bool {
+    if (c == "A") { return true; }
+    if (c == "B") { return true; }
+    if (c == "C") { return true; }
+    if (c == "D") { return true; }
+    if (c == "E") { return true; }
+    if (c == "F") { return true; }
+    if (c == "G") { return true; }
+    if (c == "H") { return true; }
+    if (c == "I") { return true; }
+    if (c == "J") { return true; }
+    if (c == "K") { return true; }
+    if (c == "L") { return true; }
+    if (c == "M") { return true; }
+    if (c == "N") { return true; }
+    if (c == "O") { return true; }
+    if (c == "P") { return true; }
+    if (c == "Q") { return true; }
+    if (c == "R") { return true; }
+    if (c == "S") { return true; }
+    if (c == "T") { return true; }
+    if (c == "U") { return true; }
+    if (c == "V") { return true; }
+    if (c == "W") { return true; }
+    if (c == "X") { return true; }
+    if (c == "Y") { return true; }
+    if (c == "Z") { return true; }
+    return false;
+}
+
+func extraer_caracter(texto: string, pos: int): string {
+    let i: int = 0;
+    while (i < len(texto)) {
+        if (i == pos) {
+            return texto.substring(i, i + 1);
+        }
+        i = i + 1;
+    }
+    return "";
+}
+
+// ======================================
+// CIFRADO CÉSAR (desplazamiento 3)
+// ======================================
+
+func cifrar_cesar(texto: string): string {
+    let resultado: string = "";
+    let i: int = 0;
+    let mayus: string = texto.upper();
+    
+    while (i < len(mayus)) {
+        let c: string = extraer_caracter(mayus, i);
+        
+        if (es_letra(c)) {
+            let pos: int = indice_letra(c);
+            let nueva_pos: int = pos + 3;
+            if (nueva_pos > 26) {
+                nueva_pos = nueva_pos - 26;
+            }
+            resultado = resultado + letra_por_numero(nueva_pos);
+        } else {
+            resultado = resultado + c;
+        }
+        i = i + 1;
+    }
+    return resultado;
+}
+
+func descifrar_cesar(texto: string): string {
+    let resultado: string = "";
+    let i: int = 0;
+    let mayus: string = texto.upper();
+    
+    while (i < len(mayus)) {
+        let c: string = extraer_caracter(mayus, i);
+        
+        if (es_letra(c)) {
+            let pos: int = indice_letra(c);
+            let nueva_pos: int = pos - 3;
+            if (nueva_pos < 1) {
+                nueva_pos = nueva_pos + 26;
+            }
+            resultado = resultado + letra_por_numero(nueva_pos);
+        } else {
+            resultado = resultado + c;
+        }
+        i = i + 1;
+    }
+    return resultado;
+}
+
+// ======================================
+// CONVERSOR LETRAS A NÚMEROS
+// ======================================
+
+func letras_a_numeros(texto: string): string {
+    let resultado: string = "";
+    let i: int = 0;
+    let mayus: string = texto.upper();
+    
+    while (i < len(mayus)) {
+        let c: string = extraer_caracter(mayus, i);
+        
+        if (es_letra(c)) {
+            let num: int = indice_letra(c);
+            if (num == 1) { resultado = resultado + " 1"; }
+            if (num == 2) { resultado = resultado + " 2"; }
+            if (num == 3) { resultado = resultado + " 3"; }
+            if (num == 4) { resultado = resultado + " 4"; }
+            if (num == 5) { resultado = resultado + " 5"; }
+            if (num == 6) { resultado = resultado + " 6"; }
+            if (num == 7) { resultado = resultado + " 7"; }
+            if (num == 8) { resultado = resultado + " 8"; }
+            if (num == 9) { resultado = resultado + " 9"; }
+            if (num == 10) { resultado = resultado + " 10"; }
+            if (num == 11) { resultado = resultado + " 11"; }
+            if (num == 12) { resultado = resultado + " 12"; }
+            if (num == 13) { resultado = resultado + " 13"; }
+            if (num == 14) { resultado = resultado + " 14"; }
+            if (num == 15) { resultado = resultado + " 15"; }
+            if (num == 16) { resultado = resultado + " 16"; }
+            if (num == 17) { resultado = resultado + " 17"; }
+            if (num == 18) { resultado = resultado + " 18"; }
+            if (num == 19) { resultado = resultado + " 19"; }
+            if (num == 20) { resultado = resultado + " 20"; }
+            if (num == 21) { resultado = resultado + " 21"; }
+            if (num == 22) { resultado = resultado + " 22"; }
+            if (num == 23) { resultado = resultado + " 23"; }
+            if (num == 24) { resultado = resultado + " 24"; }
+            if (num == 25) { resultado = resultado + " 25"; }
+            if (num == 26) { resultado = resultado + " 26"; }
+        } else if (c == " ") {
+            resultado = resultado + "  ";
+        } else {
+            resultado = resultado + " " + c;
+        }
+        i = i + 1;
+    }
+    
+    // Quitar espacio inicial
+    if (len(resultado) > 0) {
+        let inicio: string = extraer_caracter(resultado, 0);
+        if (inicio == " ") {
+            resultado = resultado.substring(1, len(resultado));
+        }
+    }
+    
+    return resultado;
+}
+
+// ======================================
+// CONVERSOR NÚMEROS A LETRAS
+// ======================================
+
+func numeros_a_letras(texto: string): string {
+    let resultado: string = "";
+    let i: int = 0;
+    let num_str: string = "";
+    
+    while (i < len(texto)) {
+        let c: string = extraer_caracter(texto, i);
+        
+        if (c == "1") { num_str = num_str + "1"; }
+        if (c == "2") { num_str = num_str + "2"; }
+        if (c == "3") { num_str = num_str + "3"; }
+        if (c == "4") { num_str = num_str + "4"; }
+        if (c == "5") { num_str = num_str + "5"; }
+        if (c == "6") { num_str = num_str + "6"; }
+        if (c == "7") { num_str = num_str + "7"; }
+        if (c == "8") { num_str = num_str + "8"; }
+        if (c == "9") { num_str = num_str + "9"; }
+        if (c == "0") { num_str = num_str + "0"; }
+        
+        if (c == " " || i == len(texto) - 1) {
+            if (len(num_str) > 0) {
+                let num: int = 0;
+                let j: int = 0;
+                
+                while (j < len(num_str)) {
+                    let d: string = extraer_caracter(num_str, j);
+                    if (d == "1") { num = num * 10 + 1; }
+                    if (d == "2") { num = num * 10 + 2; }
+                    if (d == "3") { num = num * 10 + 3; }
+                    if (d == "4") { num = num * 10 + 4; }
+                    if (d == "5") { num = num * 10 + 5; }
+                    if (d == "6") { num = num * 10 + 6; }
+                    if (d == "7") { num = num * 10 + 7; }
+                    if (d == "8") { num = num * 10 + 8; }
+                    if (d == "9") { num = num * 10 + 9; }
+                    if (d == "0") { num = num * 10 + 0; }
+                    j = j + 1;
+                }
+                
+                if (num >= 1 && num <= 26) {
+                    if (num == 1) { resultado = resultado + "A"; }
+                    if (num == 2) { resultado = resultado + "B"; }
+                    if (num == 3) { resultado = resultado + "C"; }
+                    if (num == 4) { resultado = resultado + "D"; }
+                    if (num == 5) { resultado = resultado + "E"; }
+                    if (num == 6) { resultado = resultado + "F"; }
+                    if (num == 7) { resultado = resultado + "G"; }
+                    if (num == 8) { resultado = resultado + "H"; }
+                    if (num == 9) { resultado = resultado + "I"; }
+                    if (num == 10) { resultado = resultado + "J"; }
+                    if (num == 11) { resultado = resultado + "K"; }
+                    if (num == 12) { resultado = resultado + "L"; }
+                    if (num == 13) { resultado = resultado + "M"; }
+                    if (num == 14) { resultado = resultado + "N"; }
+                    if (num == 15) { resultado = resultado + "O"; }
+                    if (num == 16) { resultado = resultado + "P"; }
+                    if (num == 17) { resultado = resultado + "Q"; }
+                    if (num == 18) { resultado = resultado + "R"; }
+                    if (num == 19) { resultado = resultado + "S"; }
+                    if (num == 20) { resultado = resultado + "T"; }
+                    if (num == 21) { resultado = resultado + "U"; }
+                    if (num == 22) { resultado = resultado + "V"; }
+                    if (num == 23) { resultado = resultado + "W"; }
+                    if (num == 24) { resultado = resultado + "X"; }
+                    if (num == 25) { resultado = resultado + "Y"; }
+                    if (num == 26) { resultado = resultado + "Z"; }
+                } else {
+                    resultado = resultado + "?";
+                }
+                num_str = "";
+            }
+            if (c == " ") {
+                resultado = resultado + " ";
+            }
+        }
+        i = i + 1;
+    }
+    
+    return resultado;
+}
+
+// ======================================
+// VALIDACIONES Y MANEJO DE ERRORES
+// ======================================
+
+func validar_no_vacio(texto: string): bool {
+    if (len(texto) == 0) {
+        print("ERROR: El campo no puede estar vacío.");
+        return false;
+    }
+    return true;
+}
+
+func validar_solo_numeros_y_espacios(texto: string): bool {
+    let i: int = 0;
+    let valido: bool = true;
+    
+    while (i < len(texto)) {
+        let c: string = extraer_caracter(texto, i);
+        if (c == "1") { valido = true; }
+        else if (c == "2") { valido = true; }
+        else if (c == "3") { valido = true; }
+        else if (c == "4") { valido = true; }
+        else if (c == "5") { valido = true; }
+        else if (c == "6") { valido = true; }
+        else if (c == "7") { valido = true; }
+        else if (c == "8") { valido = true; }
+        else if (c == "9") { valido = true; }
+        else if (c == "0") { valido = true; }
+        else if (c == " ") { valido = true; }
+        else {
+            print("ERROR: Solo se permiten números y espacios.");
+            return false;
+        }
+        i = i + 1;
+    }
+    return true;
+}
+
+// ======================================
+// MENÚ PRINCIPAL CON MANEJO DE ERRORES
+// ======================================
+
+func limpiar(): void {
+    let i: int = 0;
+    while (i < 30) {
+        print("");
+        i = i + 1;
+    }
+}
+
+func main(): void {
+    let opcion: string = "";
+    let mensaje: string = "";
+    let valido: bool = false;
+    let intentos: int = 0;
+    
+    while (opcion != "5") {
+        limpiar();
+        print("========================================");
+        print("    CIFRADOR Y CONVERSOR v1.0");
+        print("========================================");
+        print("");
+        print("  1. Cifrar mensaje ");
+        print("  2. Descifrar mensaje ");
+        print("  3. Convertir LETRAS a NÚMEROS");
+        print("  4. Convertir NÚMEROS a LETRAS");
+        print("  5. Salir");
+        print("");
+        print("========================================");
+        
+        // Validar opción del menú
+        intentos = 0;
+        valido = false;
+        while (valido == false && intentos < 3) {
+            print("Opción (1-5): ");
+            opcion = input();
+            
+            if (opcion == "1") { valido = true; }
+            else if (opcion == "2") { valido = true; }
+            else if (opcion == "3") { valido = true; }
+            else if (opcion == "4") { valido = true; }
+            else if (opcion == "5") { valido = true; }
+            else {
+                intentos = intentos + 1;
+                if (intentos < 3) {
+                    print("ERROR: Opción inválida. Intente nuevamente.");
+                }
+            }
+        }
+        
+        if (intentos >= 3) {
+            print("ERROR: Demasiados intentos fallidos.");
+            print("Presione Enter para salir...");
+            input();
+            break;
+        }
+        
+        // Opción 1: Cifrar
+        if (opcion == "1") {
+            limpiar();
+            print("========== CIFRAR MENSAJE ==========");
+            print("");
+            
+            intentos = 0;
+            valido = false;
+            while (valido == false && intentos < 3) {
+                print("Ingrese el mensaje a cifrar: ");
+                mensaje = input();
+                
+                if (validar_no_vacio(mensaje)) {
+                    valido = true;
+                } else {
+                    intentos = intentos + 1;
+                    if (intentos >= 3) {
+                        print("ERROR: Demasiados intentos fallidos.");
+                    }
+                }
+            }
+            
+            if (valido) {
+                print("");
+                print("========================================");
+                print("RESULTADO:");
+                print("Original: " + mensaje);
+                print("Cifrado:  " + cifrar_cesar(mensaje));
+                print("========================================");
+            }
+            
+            print("");
+            print("Presione Enter para continuar...");
+            input();
+        }
+        
+        // Opción 2: Descifrar
+        if (opcion == "2") {
+            limpiar();
+            print("========== DESCIFRAR MENSAJE ==========");
+            print("");
+            
+            intentos = 0;
+            valido = false;
+            while (valido == false && intentos < 3) {
+                print("Ingrese el mensaje a descifrar: ");
+                mensaje = input();
+                
+                if (validar_no_vacio(mensaje)) {
+                    valido = true;
+                } else {
+                    intentos = intentos + 1;
+                    if (intentos >= 3) {
+                        print("ERROR: Demasiados intentos fallidos.");
+                    }
+                }
+            }
+            
+            if (valido) {
+                print("");
+                print("========================================");
+                print("RESULTADO:");
+                print("Cifrado:  " + mensaje);
+                print("Original: " + descifrar_cesar(mensaje));
+                print("========================================");
+            }
+            
+            print("");
+            print("Presione Enter para continuar...");
+            input();
+        }
+        
+        // Opción 3: Letras a Números
+        if (opcion == "3") {
+            limpiar();
+            print("========== LETRAS -> NÚMEROS ==========");
+            print("(A=1, B=2, ..., Z=26)");
+            print("");
+            
+            intentos = 0;
+            valido = false;
+            while (valido == false && intentos < 3) {
+                print("Ingrese la palabra o frase: ");
+                mensaje = input();
+                
+                if (validar_no_vacio(mensaje)) {
+                    valido = true;
+                } else {
+                    intentos = intentos + 1;
+                    if (intentos >= 3) {
+                        print("ERROR: Demasiados intentos fallidos.");
+                    }
+                }
+            }
+            
+            if (valido) {
+                print("");
+                print("========================================");
+                print("RESULTADO:");
+                print("Texto:    " + mensaje);
+                print("Números: " + letras_a_numeros(mensaje));
+                print("========================================");
+            }
+            
+            print("");
+            print("Presione Enter para continuar...");
+            input();
+        }
+        
+        // Opción 4: Números a Letras
+        if (opcion == "4") {
+            limpiar();
+            print("========== NÚMEROS -> LETRAS ==========");
+            print("(1=A, 2=B, ..., 26=Z)");
+            print("");
+            print("Ejemplo: 8 15 12 1 = HOLA");
+            print("");
+            
+            intentos = 0;
+            valido = false;
+            while (valido == false && intentos < 3) {
+                print("Ingrese los números (separados por espacio): ");
+                mensaje = input();
+                
+                if (validar_no_vacio(mensaje)) {
+                    if (validar_solo_numeros_y_espacios(mensaje)) {
+                        valido = true;
+                    } else {
+                        intentos = intentos + 1;
+                    }
+                } else {
+                    intentos = intentos + 1;
+                }
+                
+                if (intentos >= 3 && valido == false) {
+                    print("ERROR: Demasiados intentos fallidos.");
+                }
+            }
+            
+            if (valido) {
+                print("");
+                print("========================================");
+                print("RESULTADO:");
+                print("Números: " + mensaje);
+                print("Letras:  " + numeros_a_letras(mensaje));
+                print("========================================");
+            }
+            
+            print("");
+            print("Presione Enter para continuar...");
+            input();
+        }
+    }
+    
+    limpiar();
+    print("========================================");
+    print("      ¡GRACIAS POR USAR EL PROGRAMA!");
+    print("========================================");
+}
+
+main();
