@@ -79,11 +79,11 @@
 
     
 ## Diagrama de clases
-![Diagrama de clases](imagenes/diagrama_clases.png)
+![Diagrama de clases](diagrama_clases.jpeg)
 
 
 ## Diagrama de casos de uso
-![Diagrama de casos de uso](imagenes/diagrama_casos_uso.png)
+![Diagrama de casos de uso](diagrama_casos_uso.jpeg)
 
 
 # Mejoras en versión 2.0
