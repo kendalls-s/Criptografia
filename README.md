@@ -17,7 +17,7 @@
 
   3. Seleccionar una opción del menú principal:
 
-     # 1. Cifrar mensaje
+     ## 1. Cifrar mensaje
       El sistema mostrará la siguiente opción:
    
       - Ingrese el mensaje a cifrar
@@ -26,7 +26,7 @@
 
  
 
-     # 2. Descifrar mensaje
+     ## 2. Descifrar mensaje
      El sistema mostrará la siguiente opción:
    
      - Ingrese el mensaje a descifrar
@@ -35,7 +35,7 @@
 
    
 
-     # 3. Convertir LETRAS a NÚMEROS
+     ## 3. Convertir LETRAS a NÚMEROS
       El sistema mostrará la siguiente opción:
    
      - Ingrese la palabra o frase
@@ -44,7 +44,7 @@
 
    
 
-     # 4. Convertir NÚMEROS a LETRAS
+     ## 4. Convertir NÚMEROS a LETRAS
      El sistema mostrará la siguiente opción:
    
      - Ingrese los números separados por espacios
@@ -52,7 +52,7 @@
      El programa convertirá los números en letras
 
 
-     # 5. Salir
+     ## 5. Salir
      Permite cerrar el programa de forma segura
 
 
