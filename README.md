@@ -58,19 +58,19 @@
 
 # Funcionalidades implementadas
 
-  # 1. Cifrado César
+  ## 1. Cifrado César
   Permite cifrar mensajes utilizando un desplazamiento de 3 posiciones
 
-  # 2. Descifrado César
+  ## 2. Descifrado César
   Permite recuperar el mensaje original de un texto cifrado
 
-  # 3. Conversión de letras a números
+  ## 3. Conversión de letras a números
   Convierte cada letra según su posición en el alfabeto
 
-  # 4. Conversión de números a letras
+  ## 4. Conversión de números a letras
   Convierte números en letras del alfabeto
 
-  # 5. Validación de errores
+  ## 5. Validación de errores
   El sistema valida:
     - Campos vacíos
     - Opciones inválidas
