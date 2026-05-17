@@ -77,6 +77,15 @@
     - Entradas incorrectas
     - Límite de intentos
 
+    
+## Diagrama de clases
+![Diagrama de clases](imagenes/diagrama_clases.png)
+
+
+## Diagrama de casos de uso
+![Diagrama de casos de uso](imagenes/diagrama_casos_uso.png)
+
+
 # Mejoras en versión 2.0
 - Interfaz gráfica
 - Guardar mensajes cifrados en archivos
