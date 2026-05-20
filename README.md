@@ -36,8 +36,8 @@
      ## 3. Cifrado Vigenére
      El sistema mostrará la siguiente opción:
 
-     Ingrese el mensaje
-     Ingrese la clave secreta
+     Ingrese el mensaje a cifrar
+     Ingrese la palabra clave (solo letras)
 
      El programa cifrará el mensaje utilizando el método polialfabético de Vigenére
      
@@ -45,8 +45,8 @@
      ## 4. Descifrado Vigenére
      El sistema mostrará la siguiente opción:
 
-     Ingrese el mensaje cifrado
-     Ingrese la clave secreta
+     Ingrese el mensaje a descrifrar
+     Ingrese la palabra clave (solo letras)
 
      El programa recuperará el mensaje original utilizando la misma clave
 
